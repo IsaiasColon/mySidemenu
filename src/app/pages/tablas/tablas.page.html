@@ -1,0 +1,37 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" color="danger"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Tablas</ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="danger">
+        <ion-icon name="add-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid>
+    
+    <ion-row *ngIf="tablas">
+      <ion-col size="6" align="center" *ngFor="let tabla of tablas">
+        <app-tabla [tabla]="tabla.id"></app-tabla>
+      </ion-col>
+    </ion-row>
+
+    <!-- <ion-row>
+      <ion-col size="6" align="center">
+        <app-tabla></app-tabla>        
+      </ion-col>
+      <ion-col size="6" align="center">
+        <app-tabla></app-tabla>
+      </ion-col>
+    </ion-row> -->
+
+  </ion-grid>
+
+
+</ion-content>

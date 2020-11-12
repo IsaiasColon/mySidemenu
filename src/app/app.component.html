@@ -3,8 +3,20 @@
     <ion-menu contentId="main-content" type="overlay">
       <ion-content>
         <ion-list id="inbox-list">
-          <ion-list-header>Inbox</ion-list-header>
-          <ion-note>hi@ionicframework.com</ion-note>
+          <ion-list-header>
+            
+            <ion-toolbar>
+              <ion-title>oLoteria</ion-title>
+              <ion-buttons slot="end">
+                <ion-button size="large" *ngIf="!localStorage.usuarioConectado" (click)="login()">
+                  <ion-icon name="log-in-outline"></ion-icon>
+                </ion-button>
+                <ion-button size="large" *ngIf="localStorage.usuarioConectado" (click)="logout()">
+                  <ion-icon name="log-out-outline"></ion-icon>
+                </ion-button>
+              </ion-buttons>
+            </ion-toolbar>
+          </ion-list-header>
 
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
             <ion-item (click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" [class.selected]="selectedIndex == i">

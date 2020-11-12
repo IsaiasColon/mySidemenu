@@ -1,0 +1,63 @@
+<ion-grid class="tabla-container border-black" *ngIf="tabla">
+  
+  <ion-row *ngIf="cartas.length">    
+    <ion-col class="tabla-col" size="3" *ngFor="let carta of cartas">
+      <img class="carta cartaSalida" [src]="carta | carta" alt="">
+    </ion-col>
+  </ion-row>
+
+  <!-- <ion-row>
+    <ion-col class="tabla-col" size="3">
+      <img class="carta cartaSalida" [src]="1 | carta" alt="">
+    </ion-col>
+    <ion-col class="tabla-col" size="3">
+      <img class="carta cartaSalida" [src]="1 | carta" alt="">
+    </ion-col>
+    <ion-col class="tabla-col" size="3">
+      <img class="carta cartaSalida" [src]="1 | carta" alt="">
+    </ion-col>
+    <ion-col class="tabla-col" size="3">
+      <img class="carta cartaSalida" [src]="1 | carta" alt="">
+    </ion-col>
+    
+    <ion-col class="tabla-col" size="3">
+      <img class="carta cartaSalida" [src]="1 | carta" alt="">
+    </ion-col>
+    <ion-col class="tabla-col" size="3">
+      <img class="carta cartaSalida" [src]="1 | carta" alt="">
+    </ion-col>
+    <ion-col class="tabla-col" size="3">
+      <img class="carta cartaSalida" [src]="1 | carta" alt="">
+    </ion-col>
+    <ion-col class="tabla-col" size="3">
+      <img class="carta cartaSalida" [src]="1 | carta" alt="">
+    </ion-col>
+    
+    <ion-col class="tabla-col" size="3">
+      <img class="carta cartaSalida" [src]="1 | carta" alt="">
+    </ion-col>
+    <ion-col class="tabla-col" size="3">
+      <img class="carta cartaSalida" [src]="1 | carta" alt="">
+    </ion-col>
+    <ion-col class="tabla-col" size="3">
+      <img class="carta cartaSalida" [src]="1 | carta" alt="">
+    </ion-col>
+    <ion-col class="tabla-col" size="3">
+      <img class="carta cartaSalida" [src]="1 | carta" alt="">
+    </ion-col>
+    
+    <ion-col class="tabla-col" size="3">
+      <img class="carta cartaSalida" [src]="1 | carta" alt="">
+    </ion-col>
+    <ion-col class="tabla-col" size="3">
+      <img class="carta cartaSalida" [src]="1 | carta" alt="">
+    </ion-col>
+    <ion-col class="tabla-col" size="3">
+      <img class="carta cartaSalida" [src]="1 | carta" alt="">
+    </ion-col>
+    <ion-col class="tabla-col" size="3">
+      <img class="carta cartaSalida" [src]="1 | carta" alt="">
+    </ion-col>
+  </ion-row> -->
+  
+</ion-grid>

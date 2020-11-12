@@ -3,6 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { AlertController } from '@ionic/angular';
+import { JugadoresService } from './servicios/jugadores.service';
+import { LocalStorageService } from './servicios/local-storage.service';
+import { IJugador, JugadorConectado } from 'src/app/_models/jugador';
 
 @Component({
   selector: 'app-root',
@@ -11,15 +15,16 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 })
 export class AppComponent implements OnInit {
   public selectedIndex = 0;
+  public usuario: IJugador = JugadorConectado;
   public appPages = [
     {
-      title: 'Inbox',
-      url: '/folder/Inbox',
+      title: 'Inicio',
+      url: 'home',
       icon: 'mail'
     },
     {
-      title: 'Outbox',
-      url: '/folder/Outbox',
+      title: 'Configuraciones',
+      url: 'config',
       icon: 'paper-plane'
     },
     {
@@ -48,7 +53,10 @@ export class AppComponent implements OnInit {
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    public alertCtrl: AlertController,
+    private jugadoresService: JugadoresService,
+    public localStorage: LocalStorageService
   ) {
     this.initializeApp();
   }
@@ -65,5 +73,50 @@ export class AppComponent implements OnInit {
     if (path !== undefined) {
       this.selectedIndex = this.appPages.findIndex(page => page.title.toLowerCase() === path.toLowerCase());
     }
+    this.localStorage.obtenerUsuarioConectado();
+  }
+
+  async login(){
+    // this.router.navigateByUrl('/tabs/tab1/agregar');
+    const alert = await this.alertCtrl.create({
+      cssClass: 'my-custom-class',
+      header: 'Iniciar Sesion',
+      inputs:[
+        { name: 'nickName', type:'text', placeholder: 'user' }
+      ],
+      buttons: [
+        { 
+          text:'Cancel', 
+          role: 'cancel', 
+          handler: () =>{
+          console.log('Cancelar');
+          } 
+        },
+        {
+          text: 'Login',
+          handler: (data) =>{
+            console.log(data);      
+            if (data.nickName.length === 0) {
+              return;
+            }
+            // Iniciar Sersion
+            this.jugadoresService.login(data.nickName).subscribe( (user: IJugador) => {
+              
+              this.usuario = user;
+              if (this.usuario) {
+                this.localStorage.guardarUsuarioConectado(user);
+              }
+            });
+          }
+        }
+      ]
+    });
+
+    alert.present();
+  }
+
+  logout(){
+    this.localStorage.borrarUsuarioConectado();
+    this.usuario = null;
   }
 }
