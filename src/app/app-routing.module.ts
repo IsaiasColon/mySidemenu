@@ -23,6 +23,10 @@ const routes: Routes = [
   {
     path: 'config',
     loadChildren: () => import('./pages/config/config.module').then( m => m.ConfigPageModule), canActivate: [AuthGuard]
+  },
+  {
+    path: 'salas',
+    loadChildren: () => import('./pages/salas/salas.module').then( m => m.SalasPageModule), canActivate: [AuthGuard]
   }
 ];
 

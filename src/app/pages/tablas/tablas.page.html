@@ -17,8 +17,8 @@
   <ion-grid>
     
     <ion-row *ngIf="tablas">
-      <ion-col size="6" align="center" *ngFor="let tabla of tablas">
-        <app-tabla [tabla]="tabla.id"></app-tabla>
+      <ion-col size="6" align="center"*ngFor="let tabla of tablas" (click)="seleccionarTabla(tabla)">
+        <app-tabla  [tabla]="tabla.id"></app-tabla>
       </ion-col>
     </ion-row>
 

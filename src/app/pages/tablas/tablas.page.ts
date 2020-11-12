@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { element } from 'protractor';
 import { Observable,  } from 'rxjs';
 import { LocalStorageService } from 'src/app/servicios/local-storage.service';
 import { TablasService } from 'src/app/servicios/tablas.service';
@@ -11,6 +12,7 @@ import { ITabla } from 'src/app/_models/tabla';
 })
 export class TablasPage implements OnInit {
 
+  tablasSeleccionadas: ITabla[] = [];
   tablas: Array<ITabla>;
 
   constructor(
@@ -20,6 +22,8 @@ export class TablasPage implements OnInit {
 
   ngOnInit() {
     this.obtenerTablas(this.localstorage.usuarioConectado.id);
+    console.log(JSON.parse(localStorage.getItem('tablas')));
+    
   }
 
   obtenerTablas(jugador: number){
@@ -29,6 +33,21 @@ export class TablasPage implements OnInit {
       console.log(this.tablas);
     });
 
+  }
+
+  seleccionarTabla(tabla: ITabla){
+    if (tabla) {
+     if ( this.tablasSeleccionadas.find(element => element == tabla)) {
+       this.tablasSeleccionadas.splice(this.tablas.indexOf(tabla));
+       
+     } else{
+       this.tablasSeleccionadas.push(tabla);
+     }
+    }
+    
+    this.localstorage.guardarTablas(this.tablasSeleccionadas);
+    console.log(this.tablasSeleccionadas);
+    
   }
 
 }

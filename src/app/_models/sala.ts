@@ -1,4 +1,4 @@
-export interface ISala {
+export class ISala {
     id: number;
     nombre: string;
     tipo: string;
@@ -8,6 +8,14 @@ export interface ISala {
     jugadorMin: number;
     jugadorMax: number;
     activo: boolean;
+
+    constructor(nombre: string) {
+        this.nombre = nombre;
+        this.protegida = false;
+        this.jugadorMin = 2;
+        this.jugadorMax = 20;
+        this.activo = true;
+    }
 }
 
 export const Tipos = [

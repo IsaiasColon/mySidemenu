@@ -1,0 +1,23 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" color="danger"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Salas</ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="danger" (click)="agregarSala()">
+        <ion-icon name="add-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list *ngIf="salas && salas.length">
+    <ion-item *ngFor="let sala of salas" (click)="verTablas(sala.id)">
+      {{sala.nombre}}
+    </ion-item>
+  </ion-list>
+
+</ion-content>
