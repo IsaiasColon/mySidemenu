@@ -7,16 +7,18 @@ import { IonicModule } from '@ionic/angular';
 import { TablasPageRoutingModule } from './tablas-routing.module';
 
 import { TablasPage } from './tablas.page';
-import { TablaComponent } from 'src/app/components/tablas/tabla/tabla.component';
-import { CartaPipe } from 'src/app/pipes/carta.pipe';
+import { PipesModule } from 'src/app/pipes/pipes.module';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    TablasPageRoutingModule
+    TablasPageRoutingModule,
+    PipesModule,
+    ComponentsModule
   ],
-  declarations: [TablasPage, TablaComponent, CartaPipe]
+  declarations: [TablasPage]
 })
 export class TablasPageModule {}

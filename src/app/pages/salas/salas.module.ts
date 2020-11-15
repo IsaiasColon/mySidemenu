@@ -7,14 +7,17 @@ import { IonicModule } from '@ionic/angular';
 import { SalasPageRoutingModule } from './salas-routing.module';
 
 import { SalasPage } from './salas.page';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SalasPageRoutingModule
+    SalasPageRoutingModule,
+    ComponentsModule
   ],
-  declarations: [SalasPage]
+  declarations: [SalasPage],
+  exports:[]
 })
 export class SalasPageModule {}

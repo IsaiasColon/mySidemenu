@@ -15,7 +15,7 @@ export class TablasComponent implements OnInit {
   @Input() sala: number;
 
   tablasSeleccionadas: ITabla[] = [];
-  tablas: ITabla[] = [];
+  @Input() tablas: Array<ITabla>;
   jugador: IJugador;
 
   constructor(
@@ -25,16 +25,19 @@ export class TablasComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.localStorage.obtenerTablas());
-    this.tablasSeleccionadas = this.localStorage.obtenerTablas();
-    console.log(this.sala);
-    this.jugador = this.localStorage.obtenerUsuarioConectado();
-    this.tablasService.getsByJugador(this.jugador.id).subscribe( tablas => {
-      this.tablas = tablas;
-      console.log(tablas);
-      
-    })
+    
   }
+
+  // ngOnInit() {
+  //   console.log(this.localStorage.obtenerTablas());
+  //   this.tablasSeleccionadas = this.localStorage.obtenerTablas();
+  //   console.log(this.sala);
+  //   this.jugador = this.localStorage.obtenerUsuarioConectado();
+  //   this.tablasService.getsByJugador(this.jugador.id).subscribe( tablas => {
+  //     this.tablas = tablas;
+  //     console.log(tablas);      
+  //   })
+  // }
 
   getTablas(sala){
 
@@ -46,6 +49,13 @@ export class TablasComponent implements OnInit {
     this.modalCtrl.dismiss({
       'dismissed': true
     });
+  }
+
+  
+
+  seleccionarTabla(tabla: ITabla){
+    console.log(tabla);
+    
   }
 
 }

@@ -6,7 +6,7 @@ import { TablasService } from 'src/app/servicios/tablas.service';
 import { ITabla } from 'src/app/_models/tabla';
 
 @Component({
-  selector: 'app-tablas',
+  selector: 'app-tablas-page',
   templateUrl: './tablas.page.html',
   styleUrls: ['./tablas.page.scss'],
 })
