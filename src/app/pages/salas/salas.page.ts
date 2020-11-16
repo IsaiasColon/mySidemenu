@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController, ModalController } from '@ionic/angular';
+import { ModalContainerComponent } from 'src/app/components/modal-container/modal-container.component';
 import { SalasService } from 'src/app/servicios/salas.service';
 import { ISala } from 'src/app/_models/sala';
 import { ITabla } from 'src/app/_models/tabla';
@@ -28,17 +29,17 @@ export class SalasPage implements OnInit {
   }
 
   async verTablas(sala) {
-    // const modal = await this.modalCtrl.create({
-    //   component: TablasComponent,
-    //   cssClass: 'my-custom-class',
-    //   swipeToClose: true,
-    //   componentProps: {
-    //     'sala': `${sala}`
-    //   }
+    const modal = await this.modalCtrl.create({
+      component: ModalContainerComponent,
+      cssClass: 'my-custom-class',
+      swipeToClose: true,
+      componentProps: {
+        'sala': `${sala}`
+      }
       
-    // });
+    });
     
-    // return await modal.present();
+    return await modal.present();
   }
 
   async entrarEnSala(){

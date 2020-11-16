@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { LocalStorageService } from 'src/app/servicios/local-storage.service';
 import { TablasService } from 'src/app/servicios/tablas.service';
@@ -18,14 +18,32 @@ export class TablasComponent implements OnInit {
   @Input() tablas: Array<ITabla>;
   jugador: IJugador;
 
+  @Output() newItemEvent = new EventEmitter<ITabla[]>();
+
+  addNewItem(value: ITabla[]) {
+    this.newItemEvent.emit(value);
+  }
+
   constructor(
     private tablasService: TablasService,
-    private localStorage: LocalStorageService,
-    public modalCtrl: ModalController
+    private localStorage: LocalStorageService
   ) { }
 
   ngOnInit() {
+    console.log(this.sala);
     
+    // this.obtenerTablas(this.localStorage.usuarioConectado.id);
+    // console.log(JSON.parse(localStorage.getItem('tablas')));
+    
+  }
+
+  obtenerTablas(jugador: number){
+
+    this.tablasService.getsByJugador(jugador).subscribe( (tablas:ITabla[]) => {
+      this.tablas = tablas;
+      console.log(this.tablas);
+    });
+
   }
 
   // ngOnInit() {
@@ -40,22 +58,24 @@ export class TablasComponent implements OnInit {
   // }
 
   getTablas(sala){
-
+    
   }
-
-  dismiss() {
-    // using the injected ModalController this page
-    // can "dismiss" itself and optionally pass back data
-    this.modalCtrl.dismiss({
-      'dismissed': true
-    });
-  }
-
-  
 
   seleccionarTabla(tabla: ITabla){
     console.log(tabla);
-    
+    if (tabla) {
+      
+      if (this.tablasSeleccionadas.includes(tabla)) {        
+        this.tablasSeleccionadas.splice(this.tablasSeleccionadas.indexOf(tabla), 1);
+      } else{
+        this.tablasSeleccionadas.push(tabla);
+      }
+
+    } else{
+      return;
+    }
+    console.log(this.tablasSeleccionadas);
+    this.addNewItem(this.tablasSeleccionadas);
   }
 
 }

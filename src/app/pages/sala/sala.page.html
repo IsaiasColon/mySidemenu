@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" color="danger"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Sala</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <app-tablas *ngIf="tablas" [tablas]="tablas"></app-tablas>
+
+</ion-content>

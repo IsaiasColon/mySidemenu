@@ -12,6 +12,7 @@ export class TablaComponent implements OnInit {
 
   @Input() tabla: Observable<number>;
   cartas:number[] = [];
+  cartasSalidas: number[] = [];
 
   constructor(
     private _cs: CartasService

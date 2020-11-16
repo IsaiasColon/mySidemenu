@@ -35,19 +35,19 @@ export class TablasPage implements OnInit {
 
   }
 
-  seleccionarTabla(tabla: ITabla){
-    if (tabla) {
-     if ( this.tablasSeleccionadas.find(element => element == tabla)) {
-       this.tablasSeleccionadas.splice(this.tablas.indexOf(tabla));
+  // seleccionarTabla(tabla: ITabla){
+  //   if (tabla) {
+  //    if ( this.tablasSeleccionadas.find(element => element == tabla)) {
+  //      this.tablasSeleccionadas.splice(this.tablas.indexOf(tabla));
        
-     } else{
-       this.tablasSeleccionadas.push(tabla);
-     }
-    }
+  //    } else{
+  //      this.tablasSeleccionadas.push(tabla);
+  //    }
+  //   }
     
-    this.localstorage.guardarTablas(this.tablasSeleccionadas);
-    console.log(this.tablasSeleccionadas);
+  //   this.localstorage.guardarTablas(this.tablasSeleccionadas);
+  //   console.log(this.tablasSeleccionadas);
     
-  }
+  // }
 
 }

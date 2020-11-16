@@ -27,6 +27,10 @@ const routes: Routes = [
   {
     path: 'salas',
     loadChildren: () => import('./pages/salas/salas.module').then( m => m.SalasPageModule), canActivate: [AuthGuard]
+  },
+  {
+    path: 'salas/:id',
+    loadChildren: () => import('./pages/sala/sala.module').then( m => m.SalaPageModule)
   }
 ];
 

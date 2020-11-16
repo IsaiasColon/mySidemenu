@@ -67,4 +67,22 @@ export class LocalStorageService {
   borrarJuego(){
     localStorage.removeItem( "juego" );
   }
+
+  obtenerTablasSeleccionadas(){    
+    this.tablas = JSON.parse(localStorage.getItem("tablas-seleccionadas"));
+    if (this.tablas) {
+      // console.log(this.tablas);
+      return this.tablas;
+    }else {
+      console.log("No se han seleccionado tablas");      
+    }
+  }
+
+  guardarTablasSeleccionadas(tablas: ITabla[]){    
+    localStorage.setItem( "tablas-seleccionadas", JSON.stringify( tablas ) );
+  }
+
+  borrarTablasSeleccionadas(){
+    localStorage.removeItem( "tablas-seleccionadas" );
+  }
 }

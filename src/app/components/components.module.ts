@@ -5,11 +5,12 @@ import { TablasComponent } from './tablas/tablas.component';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { PipesModule } from '../pipes/pipes.module';
+import { ModalContainerComponent } from './modal-container/modal-container.component';
 
 
 
 @NgModule({
-  declarations: [TablasComponent, TablaComponent],
+  declarations: [TablasComponent, TablaComponent, ModalContainerComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -19,7 +20,8 @@ import { PipesModule } from '../pipes/pipes.module';
   exports:[
     TablasComponent,
     TablaComponent,
-    PipesModule
+    PipesModule,
+    ModalContainerComponent
   ]
 })
 export class ComponentsModule { }

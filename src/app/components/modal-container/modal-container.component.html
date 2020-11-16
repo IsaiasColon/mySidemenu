@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Tablas</ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="danger" (click)="dismiss()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  
+  <app-tablas *ngIf="sala && tablas" [tablas]="tablas" [sala]="sala" (newItemEvent)="addItem($event)"></app-tablas>
+
+  <ion-button color="danger" expand="block" fill="outline" (click)="guardarTablas()">Guardar</ion-button>
+
+</ion-content>
