@@ -2,7 +2,8 @@
   
   <ion-row *ngIf="cartas.length">    
     <ion-col class="tabla-col" size="3" *ngFor="let carta of cartas">
-      <img ng class="carta cartaSalida" src="/src/assets/img/fichas/azul.png" alt="">
+      <img class="carta" [src]="carta | carta" alt="">
+      <img class="carta cartaSalida" src="../../../../assets/img/fichas/azul2.png" alt="">
 
       <!-- <ng-container *ngIf="cartasSalidas.includes(carta); else elseTemplate">
         <img ng class="carta cartaSalida" alt="">

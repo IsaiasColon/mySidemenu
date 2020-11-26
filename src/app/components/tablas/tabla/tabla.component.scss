@@ -1,8 +1,18 @@
 .tabla-container {
-    background-color: rgb(200,200,200) !important;
+    // background-color: rgb(200,200,200) !important;
 }
 
 .tabla-container .tabla-col{
     padding: 0 2px !important;
     height: auto !important;
+}
+
+.carta {
+    position: relative;
+}
+
+.cartaSalida {
+    float: left;
+    z-index: 100;
+    line-height: 0;
 }

@@ -14,7 +14,7 @@ const routes: Routes = [
   },
   {
     path: 'tablas',
-    loadChildren: () => import('./pages/tablas/tablas.module').then( m => m.TablasPageModule), canActivate: [AuthGuard]
+    loadChildren: () => import('./pages/tablas/tablas.module').then( m => m.TablasPageModule)
   },
   {
     path: 'juegos',
